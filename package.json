@@ -1,0 +1,25 @@
+{
+  "name": "ticket-app",
+  "version": "1.0.0",
+  "main": "app.js",
+  "dependencies": {
+    "@grpc/grpc-js": "^1.12.5",
+    "@grpc/proto-loader": "^0.5.5",
+    "bcrypt": "^5.1.1",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.9.3",
+    "pg": "^8.13.1",
+    "redis": "^4.7.0",
+    "typeorm": "^0.3.20"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "Ticket App for the Ticket Booking System",
+  "scripts": {
+    "start:gateway": "node app/gateway-service/app.js",
+    "start:user": "node app/user-service/app.js",
+    "start:event": "node app/event-service/app.js",
+    "start:ticket": "node app/ticket-service/app.js"
+  }
+}

@@ -1,0 +1,30 @@
+syntax = "proto3";  // Specify the syntax version for Protocol Buffers
+package ticket;     // Define the package name for the service
+
+// Define the Ticket message (data structure)
+message Ticket {
+  string id = 1;           // Unique ID of the ticket
+  int32 user_id = 2;       // User ID of the person who bought the ticket
+  string event_id = 3;     // Event ID for the event the ticket is for
+  string ticket_type = 4;  // Type of the ticket (VIP, General, etc.)
+  double price = 5;        // Price of the ticket
+  string status = 6;       // Status of the ticket (e.g., "CONFIRMED", "CANCELLED")
+  string created_at = 7;   // Time when the ticket was created
+  string updated_at = 8;   // Time when the ticket was last updated
+}
+
+// Define the service (methods) for managing tickets
+service TicketService {
+  rpc CreateTicket (Ticket) returns (Ticket);        // Create a new ticket
+  rpc GetTicket (TicketRequest) returns (Ticket);    // Get a specific ticket by its ID
+  rpc UpdateTicket (Ticket) returns (Ticket);        // Update the status or information of a ticket
+  rpc DeleteTicket (TicketRequest) returns (Empty);  // Delete a ticket by its ID
+}
+
+// Define the request message for fetching a ticket by ID
+message TicketRequest {
+  string id = 1;  // Ticket ID to be retrieved
+}
+
+// Empty message for responses that do not return any data
+message Empty {}

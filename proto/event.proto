@@ -1,0 +1,74 @@
+syntax = "proto3";
+
+package event;
+
+service EventService {
+  rpc createEvent (CreateEventRequest) returns (CreateEventResponse);
+  rpc getEventById (GetEventRequest) returns (GetEventResponse);
+  rpc updateEvent (UpdateEventRequest) returns (UpdateEventResponse);
+  rpc listEvents (ListEventsRequest) returns (ListEventsResponse); // Add this line
+}
+
+
+// Request message for listing events
+message ListEventsRequest {}
+
+message ListEventsResponse {
+  repeated Event events = 1; // List of events
+}
+
+// Event definition
+message Event {
+  string eventId = 1;
+  string title = 2;
+  string description = 3;
+  string location = 4;
+  string date = 5;
+  repeated Ticket tickets = 6;
+}
+
+message CreateEventRequest {
+  string title = 1;
+  string description = 2;
+  string location = 3;
+  string date = 4;
+  repeated Ticket tickets = 5;
+}
+
+message CreateEventResponse {
+  string message = 1;
+  string eventId = 2;
+}
+
+message GetEventRequest {
+  string eventId = 1;
+}
+
+message GetEventResponse {
+  string _id = 1;
+  string title = 2;
+  string description = 3;
+  string location = 4;
+  string date = 5;
+  repeated Ticket tickets = 6;
+}
+
+message UpdateEventRequest {
+  string eventId = 1;
+  string title = 2;
+  string description = 3;
+  string location = 4;
+  string date = 5;
+  repeated Ticket tickets = 6;
+}
+
+message UpdateEventResponse {
+  string message = 1;
+}
+
+message Ticket {
+  string type = 1;
+  int32 price = 2;
+  int32 total_quantity = 3;
+  int32 remaining_quantity = 4;
+}

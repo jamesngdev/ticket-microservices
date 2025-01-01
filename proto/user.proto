@@ -1,0 +1,51 @@
+syntax = "proto3";
+
+package user;
+
+// UserService definition
+service UserService {
+  // User login method
+  rpc Login (LoginRequest) returns (LoginResponse);
+
+  // User registration method
+  rpc Register (RegisterRequest) returns (RegisterResponse);
+
+  // Get user by ID method
+  rpc GetUserById (GetUserByIdRequest) returns (UserResponse);
+}
+
+// Request message for Login
+message LoginRequest {
+  string email = 1;       // User email
+  string password = 2;    // User password
+}
+
+// Response message for Login
+message LoginResponse {
+  string jwt_token = 1;   // JWT token for authentication
+}
+
+// Request message for Register
+message RegisterRequest {
+  string username = 1;    // Username
+  string email = 2;       // Email
+  string password = 3;    // Password
+}
+
+// Response message for Register
+message RegisterResponse {
+  string message = 1;     // Success message
+}
+
+// Request message for GetUserById
+message GetUserByIdRequest {
+  string userId = 1;       // User ID
+}
+
+// Response message for a User
+message UserResponse {
+  string userId = 1;       // User ID
+  string username = 2;    // Username
+  string email = 3;       // Email
+  string status = 4;      // Status (e.g., "active" or "inactive")
+}

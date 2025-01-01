@@ -1,0 +1,11 @@
+{
+  "name": "gateway-service",
+  "version": "1.0.0",
+  "main": "gateway-service.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "@grpc/grpc-js": "^1.4.4",
+    "@grpc/proto-loader": "^0.5.6",
+    "axios": "^0.21.1"
+  }
+}
