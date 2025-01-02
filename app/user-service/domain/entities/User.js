@@ -1,13 +1,13 @@
 const {EntitySchema} = require('typeorm');
 
 const User = new EntitySchema({
-    name: 'User', // Logical name of the entity
-    tableName: 'users', // Optional: Name of the table in the database
+    name: 'User',
+    tableName: 'users',
     columns: {
         userId: {
             primary: true,
             type: 'uuid',
-            generated: 'uuid', // Automatically generates IDs
+            generated: 'uuid',
         },
         username: {
             type: 'varchar',

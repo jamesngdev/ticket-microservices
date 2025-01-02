@@ -7,10 +7,11 @@ const successResponse = (res, data, message) => {
 }
 
 
-const errorResponse = (res, message, status = 500) => {
+const errorResponse = (res, errorCode = 'UNKNOWN_ERROR', message = null, status = 500) => {
     return res.status(status).json({
         status: 'error',
-        message,
+        errorCode: errorCode,
+        message: message || errorCode,
     });
 }
 

@@ -1,7 +1,6 @@
 const {DataSource} = require('typeorm');
-const User = require('./entity/User'); // Path to your User entity file
-const {services} = require('../../../libs/core/config');
-const config = services.user;
+const config = require('../../config/index');
+const entities = require('./../../domain/entities');
 
 const AppDataSource = new DataSource({
     type: config.database.type, // Database type
@@ -12,7 +11,7 @@ const AppDataSource = new DataSource({
     database: config.database.database, // Database name
     synchronize: true,
     logging: true,
-    entities: [User],
+    entities: entities,
 });
 
 module.exports = {AppDataSource};

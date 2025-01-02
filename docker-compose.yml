@@ -30,6 +30,21 @@ services:
     volumes:
       - events_db:/data/db  # Persistent storage
 
+  rabbitmq:
+    image: "rabbitmq:3-management"
+    container_name: ticket_booking_rabbitmq
+    ports:
+      - "5672:5672"      # RabbitMQ default AMQP port
+      - "15672:15672"    # RabbitMQ Management plugin UI (HTTP)
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+    volumes:
+      - rabbitmq-data:/var/lib/rabbitmq
+    networks:
+      - rabbitmq-net
+
 volumes:
   postgres_data:
   events_db:
+  rabbitmq-data:

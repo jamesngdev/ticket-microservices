@@ -7,7 +7,7 @@ const login = async (req, res) => {
 
     client.login({email, password}, (error, response) => {
         if (error) {
-            errorResponse(res, error.message);
+            errorResponse(res, error.details);
         } else {
             successResponse(res, response, 'Login successful');
         }
@@ -18,7 +18,7 @@ const register = async (req, res) => {
     const {username, email, password} = req.body;
     client.register({username, email, password}, (error, response) => {
         if (error) {
-            errorResponse(res, error.message);
+            errorResponse(res, error.details);
         } else {
             successResponse(res, response, 'User registered');
         }
