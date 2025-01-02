@@ -1,4 +1,4 @@
-const {Kafka} = require('kafkajs');
+const {Kafka, logLevel} = require('kafkajs');
 const configs = require('./config');
 let kafka = {};
 
@@ -9,6 +9,7 @@ const createKafkaClient = (clientId) => {
 
     kafka[clientId] = new Kafka({
         clientId: clientId, brokers: configs.kafka.brokers,
+        logLevel: logLevel.NOTHING, // Disable logs
     });
     return kafka[clientId];
 };
@@ -23,7 +24,7 @@ const createProducer = (clientId) => {
 const createConsumer = (clientId, consumerOptions) => {
     const kafka = createKafkaClient(clientId);
     return kafka.consumer({
-       ...consumerOptions,
+        ...consumerOptions,
         fetchMinBytes: 1, // Nhận message ngay khi có dữ liệu
     });
 }

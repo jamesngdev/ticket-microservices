@@ -9,7 +9,8 @@ AppDataSource.initialize()
         console.log('Connected to PostgreSQL and TypeORM is initialized!');
         listenTicketReserved()
         createGrpcServer(config, {
-            createOrder: orderController.createOrder
+            createOrder: orderController.createOrder,
+            getOrder: orderController.getOrder
         })
     })
     .catch((error) => {

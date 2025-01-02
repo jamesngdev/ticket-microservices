@@ -15,7 +15,19 @@ const createOrder = async (req, res) => {
     });
 }
 
+const getOrder = (req, res) => {
+    const orderId = req.params.id;
+    client.getOrder({orderId}, (error, response) => {
+        if (error) {
+            errorResponse(res, error.message);
+        } else {
+            successResponse(res, response, 'Get order successfully');
+        }
+    });
+}
+
 
 module.exports = {
     createOrder,
+    getOrder
 }

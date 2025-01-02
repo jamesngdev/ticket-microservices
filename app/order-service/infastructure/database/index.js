@@ -11,7 +11,7 @@ const AppDataSource = new DataSource({
     password: config.database.password, // Database password
     database: config.database.database, // Database name
     synchronize: true,
-    logging: true,
+    logging: false,
     entities: [
         Order,
         OrderItem

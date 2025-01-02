@@ -15,7 +15,7 @@ async function sendMessage(topic, message) {
         ],
     });
 
-    console.log(`Message sent successfully:`, message);
+    // console.log(`Message sent successfully:`, message);
 
     await producer.disconnect();
 }

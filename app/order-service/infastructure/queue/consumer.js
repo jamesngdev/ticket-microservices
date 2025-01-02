@@ -50,13 +50,13 @@ async function handleTicketReserved(event) {
 }
 
 async function handleTicketReservationFailed(event) {
-    const eventId = event?.data?.eventId;
+    const orderId = event?.data?.orderId;
     const reason = event?.data?.reason;
 
-    console.info(`Ticket reservation failed for eventId: ${eventId}. Reason: ${reason}`);
+    console.info(`Ticket reservation failed for orderId: ${orderId}. Reason: ${reason}`);
     // Update event status to 'Available'
-    await ticketReservationFailedUseCase(event);
-    console.log(`Ticket reservation failed for eventId: ${eventId}`);
+    await ticketReservationFailedUseCase(orderId);
+    console.log(`Ticket reservation failed for orderId: ${orderId}`);
 }
 
 module.exports = {
