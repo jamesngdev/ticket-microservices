@@ -1,4 +1,4 @@
-const EventRepository = require('../../domain/repositories/user.repository');
+const EventRepository = require('../../domain/repositories/event.repository');
 const errorCodes = require("../../shared/constants/error-codes");
 
 class EventService {

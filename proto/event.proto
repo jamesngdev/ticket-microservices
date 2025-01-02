@@ -7,8 +7,23 @@ service EventService {
   rpc getEventById (GetEventRequest) returns (GetEventResponse);
   rpc updateEvent (UpdateEventRequest) returns (UpdateEventResponse);
   rpc listEvents (ListEventsRequest) returns (ListEventsResponse); // Add this line
+  rpc reserveMultipleTickets (ReserveMultipleTicketsRequest) returns (ReserveMultipleTicketsResponse);
 }
 
+message TicketReservation {
+  string ticketId = 1;
+  int32 quantity = 2;
+}
+
+message ReserveMultipleTicketsRequest {
+  string eventId = 1;
+  repeated TicketReservation ticketReservations = 2;
+}
+
+message ReserveMultipleTicketsResponse {
+  bool success = 1;
+  string message = 2;
+}
 
 // Request message for listing events
 message ListEventsRequest {}
@@ -71,4 +86,5 @@ message Ticket {
   int32 price = 2;
   int32 total_quantity = 3;
   int32 remaining_quantity = 4;
+  string _id = 5;
 }

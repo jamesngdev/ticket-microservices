@@ -7,11 +7,14 @@
     "@grpc/proto-loader": "^0.5.5",
     "bcrypt": "^5.1.1",
     "express": "^4.17.1",
+    "ioredis": "^5.4.2",
     "joi": "^17.13.3",
     "jsonwebtoken": "^9.0.2",
+    "kafkajs": "^2.2.4",
     "mongoose": "^8.9.3",
     "pg": "^8.13.1",
     "redis": "^4.7.0",
+    "redlock": "^5.0.0-beta.2",
     "typeorm": "^0.3.20"
   },
   "author": "",
@@ -21,6 +24,7 @@
     "start:gateway": "node app/gateway-service/app.js",
     "start:user": "node app/user-service/app.js",
     "start:event": "node app/event-service/app.js",
-    "start:ticket": "node app/ticket-service/app.js"
+    "start:ticket": "node app/ticket-service/app.js",
+    "start:order": "node app/order-service/app.js"
   }
 }

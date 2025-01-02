@@ -1,0 +1,80 @@
+syntax = "proto3";
+
+package order;
+
+// Order Service definition
+service OrderService {
+  rpc CreateOrder (CreateOrderRequest) returns (CreateOrderResponse);
+  rpc GetOrder (GetOrderRequest) returns (GetOrderResponse);
+  rpc UpdateOrderStatus (UpdateOrderStatusRequest) returns (UpdateOrderStatusResponse);
+  rpc CancelOrder (CancelOrderRequest) returns (CancelOrderResponse);
+  rpc ListOrders (ListOrdersRequest) returns (ListOrdersResponse);
+}
+
+message Order {
+  string orderId = 1;
+  string userId = 2;
+  string eventId = 3;
+  repeated OrderTicket tickets = 4;
+  double totalPrice = 5;
+  string status = 6; // Pending, Paid, Canceled
+  string createdAt = 7;
+  string updatedAt = 8;
+}
+
+message OrderTicket {
+  string ticketId = 1;
+  string ticketType = 2;
+  int32 quantity = 3;
+  double unitPrice = 4;
+  double totalPrice = 5;
+}
+
+// Create Order
+message CreateOrderRequest {
+  string userId = 1;
+  string eventId = 2;
+  repeated OrderTicket tickets = 3;
+}
+
+message CreateOrderResponse {
+  string message = 1;
+  string orderId = 2;
+}
+
+// Get Order
+message GetOrderRequest {
+  string orderId = 1;
+}
+
+message GetOrderResponse {
+  Order order = 1;
+}
+
+// Update Order Status
+message UpdateOrderStatusRequest {
+  string orderId = 1;
+  string status = 2; // Pending, Paid, Canceled
+}
+
+message UpdateOrderStatusResponse {
+  string message = 1;
+}
+
+// Cancel Order
+message CancelOrderRequest {
+  string orderId = 1;
+}
+
+message CancelOrderResponse {
+  string message = 1;
+}
+
+// List Orders
+message ListOrdersRequest {
+  string userId = 1; // Optional: Filter by user
+}
+
+message ListOrdersResponse {
+  repeated Order orders = 1;
+}

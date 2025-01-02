@@ -24,6 +24,9 @@ const initGrpcClients = () => {
 }
 
 const getGrpcClient = (serviceName) => {
+    if (!clients[serviceName]) {
+        initGrpcClients();
+    }
     return clients[serviceName];
 }
 

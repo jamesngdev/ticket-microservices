@@ -19,6 +19,9 @@ const createEventUseCase = async (payload) => {
             tickets,
         });
 
+
+
+
         return {
             error: null,
             data: newEvent

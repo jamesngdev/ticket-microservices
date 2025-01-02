@@ -53,6 +53,30 @@ module.exports = {
                     database: 'ticket_service_db',
                 }
             },
+        },
+        order: {
+            package: 'order',
+            service: 'OrderService',
+            protoPath: join(PROTO_DIR, 'order.proto'),
+            host: 'localhost',
+            port: 50055,
+            config: {
+                redis: {
+                    host: 'localhost',
+                    port: 6379,
+                },
+                database: {
+                    type: 'postgres',
+                    host: 'localhost',
+                    port: 5432,
+                    username: 'postgres',
+                    password: 'postgres',
+                    database: 'order_service_db',
+                }
+            },
         }
+    },
+    kafka: {
+        brokers: ['localhost:9092']
     }
 }

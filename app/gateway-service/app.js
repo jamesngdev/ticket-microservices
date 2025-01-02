@@ -15,6 +15,7 @@ app.use(express.json());
 // app.use('/ticket', require('./modules/ticket/ticket.router'));
 app.use('/auth', require('./modules/auth/auth.router'));
 app.use('/events', require('./modules/event/event.router'));
+app.use('/orders', require('./modules/order/order.router'));
 
 // Start the Express server
 app.listen(port, () => {
